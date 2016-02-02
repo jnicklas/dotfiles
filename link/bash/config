@@ -1,0 +1,26 @@
+export PS1='\[\e[1;31m\]\w\[\e[1;32m\]$(__git_ps1 "(%s)")\[\e[m\]\$ '
+export EDITOR="vi"
+export LSCOLORS='ExFxcxdxBxegedabagacad'
+export GREP_OPTIONS="--color=auto"
+export GREP_COLOR="7;33"
+export HISTCONTROL=ignoreboth:erasedups # ignore duplicate bash history
+
+function ip {
+  ip=$(ipconfig getifaddr en0);
+  echo $ip | tr -d '\n' | pbcopy;
+  echo $ip
+}
+export -f ip
+
+type docker-machine > /dev/null 2>&1 && {
+  eval $(docker-machine env default)
+}
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+stty -ixon
+
+export NVM_DIR=~/.nvm
+if [ -e $NVM_DIR/nvm-exec ]; then
+  source $(brew --prefix nvm)/nvm.sh
+fi

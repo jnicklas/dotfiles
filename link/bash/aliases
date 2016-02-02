@@ -1,0 +1,9 @@
+alias b="bundle exec"
+
+# check for presence of hub, if so use it instead of git
+type hub >/dev/null 2>&1 && {
+  alias git="hub"
+}
+
+alias g="git"
+alias gs="git status"

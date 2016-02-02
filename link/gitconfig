@@ -1,0 +1,36 @@
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	s = status
+	automerge = !git config branch.master.remote origin && git config branch.master.merge refs/heads/master
+[color]
+	interactive = auto
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = ~/.gitignore
+[apply]
+	whitespace = nowarn
+[browser "gitscm"]
+  cmd = /bin/sh -c 'open http://git-scm.com/docs/$(basename $1 .html)' --
+[help]
+  browser = gitscm
+[rebase]
+	autosquash = true
+[push]
+	default = upstream
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true
+[partners]
+	current = jonas
+[user]
+	name = Jonas Nicklas
+	email = jonas.nicklas@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

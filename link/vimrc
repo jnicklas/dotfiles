@@ -1,0 +1,140 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise' " automatically end code blocks
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired' " normal mode abbreviations
+Plug 'tpope/vim-abolish' " case conversions (and abbreviations)
+Plug 'tpope/vim-repeat'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-ragtag'
+Plug 'kchmck/vim-coffee-script'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'rizzatti/dash.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'majutsushi/tagbar'
+Plug 'elixir-lang/vim-elixir'
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
+
+set exrc " enable per-directory .vimrc files
+set secure " disable unsafe commands in local .vimrc files
+
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+set tags=tags
+
+syntax enable
+set background=dark
+colorscheme solarized
+
+set guifont=Monaco:h14
+
+" Explicitly set 256 color support
+set t_Co=256
+
+" Enable filetype-specific indenting and plugins
+filetype plugin indent on
+
+" Syntax Highlighting on
+set nocompatible
+syntax on
+
+" Disable bell.
+set vb t_vb=
+
+" resize current buffer in the given direction
+nnoremap <D-right> :vertical resize +5<cr>
+nnoremap <D-up> :resize -5<cr>
+nnoremap <D-down> :resize +5<cr>
+nnoremap <D-left> :vertical resize -5<cr>
+
+" dispatch.vim keybinding
+nnoremap <F9> :Dispatch<CR>
+
+" line numbers
+set number
+set numberwidth=3
+
+" Open new horizontal split windows below current
+set splitbelow
+
+" Open new vertical split windows to the right
+set splitright
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" don't wrap lines that are too long
+set nowrap
+
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufRead *.json :set ft=javascript
+autocmd BufRead *.es6 :set ft=javascript
+autocmd BufRead *.jbuilder :set ft=ruby
+autocmd BufRead *.serenade :set ft=slim
+
+autocmd BufRead,BufNewFile *.py set shiftwidth=4
+autocmd BufRead,BufNewFile *.py set tabstop=4
+
+" leader is set to the dash key, as it is much friendlier on a swedish
+" keyboard
+let mapleader = "-"
+
+" don't ever create swap files, they're annoying!
+set nobackup
+set noswapfile
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" highlight search results
+set hlsearch
+set incsearch
+
+" clear highlighted matches with space
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+nnoremap <C-s> :w<CR>
+
+" allow switching away from buffers that have changes
+set nohidden
+
+syntax enable
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
+
+" use the silver searcher for faster and better Ack searches
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" move in quickfix list, useful with Ack.vim
+nnoremap gcn :cn<CR>
+nnoremap gcp :cp<CR>
+
+" Disable Ex mode. Fuck off.
+nnoremap Q <nop>
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+"Invisible character colors
+highlight NonText guifg=#295C69
+highlight SpecialKey guifg=#295C69

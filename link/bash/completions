@@ -1,0 +1,15 @@
+PROJECT_DIR=~/Projects
+
+_complete_projects()
+{
+    COMPREPLY=( $(ls $PROJECT_DIR | grep "^$2") )
+}
+complete -F _complete_projects p
+
+# changing directory to code project
+function p { cd $PROJECT_DIR/$1; }
+
+# brew install bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi

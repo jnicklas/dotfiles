@@ -1,0 +1,6 @@
+#/bin/bash
+
+for f in `pwd`/link/*
+do
+  ln -nsi $f ~/.`basename $f`
+done
