@@ -5,8 +5,6 @@ set background=dark
 " Disable toolbar on startup
 set guioptions-=T
 
-nnoremap <D-e> :NERDTree<CR>
-
 " fullscreen maximizes vertically AND horizontally
 set fuoptions=maxvert,maxhorz
 
