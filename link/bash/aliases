@@ -7,3 +7,5 @@ type hub >/dev/null 2>&1 && {
 
 alias g="git"
 alias gs="git status"
+alias gp="git push"
+alias gl="git pull"
