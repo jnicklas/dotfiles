@@ -114,7 +114,7 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-p> :FZF<CR>
 
 " allow switching away from buffers that have changes
-set nohidden
+set hidden
 
 syntax enable
 let g:solarized_termcolors=256
