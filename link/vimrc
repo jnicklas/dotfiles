@@ -25,6 +25,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jparise/vim-graphql'
+Plug 'wellle/targets.vim'
 
 call plug#end()
 
