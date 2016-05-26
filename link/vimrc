@@ -89,10 +89,6 @@ autocmd BufRead *.serenade :set ft=slim
 autocmd BufRead,BufNewFile *.py set shiftwidth=4
 autocmd BufRead,BufNewFile *.py set tabstop=4
 
-" leader is set to the dash key, as it is much friendlier on a swedish
-" keyboard
-let mapleader = "-"
-
 " don't ever create swap files, they're annoying!
 set nobackup
 set noswapfile
