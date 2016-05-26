@@ -65,6 +65,7 @@ nnoremap <D-left> :vertical resize -5<cr>
 
 " dispatch.vim keybinding
 nnoremap <F9> :Dispatch<CR>
+nnoremap <leader>' :Dispatch<CR>
 
 " line numbers
 set number
