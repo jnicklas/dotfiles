@@ -1,15 +1,14 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise' " automatically end code blocks
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " normal mode abbreviations
 Plug 'tpope/vim-abolish' " case conversions (and abbreviations)
 Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-vinegar' " file navigation
 Plug 'kchmck/vim-coffee-script'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-dispatch'
