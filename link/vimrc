@@ -23,6 +23,7 @@ Plug 'majutsushi/tagbar'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'slim-template/vim-slim'
 
 call plug#end()
 
