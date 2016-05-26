@@ -7,8 +7,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " normal mode abbreviations
 Plug 'tpope/vim-abolish' " case conversions (and abbreviations)
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-vinegar' " improved file explorer
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-vinegar' " file navigation
 Plug 'kchmck/vim-coffee-script'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-dispatch'
@@ -22,10 +22,11 @@ Plug 'tpope/vim-projectionist'
 Plug 'majutsushi/tagbar'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'jparise/vim-graphql'
 Plug 'wellle/targets.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'slim-template/vim-slim'
+Plug 'thoughtbot/vim-rspec'
 
 call plug#end()
 
@@ -66,6 +67,7 @@ nnoremap <D-left> :vertical resize -5<cr>
 
 " dispatch.vim keybinding
 nnoremap <F9> :Dispatch<CR>
+nnoremap <leader>' :Dispatch<CR>
 
 " line numbers
 set number
@@ -112,9 +114,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " convenient shortcut to save file
 nnoremap <C-s> :w<CR>
 
-" open fuzzy find
-nnoremap <C-p> :FZF<CR>
-
 " allow switching away from buffers that have changes
 set hidden
 
@@ -142,3 +141,10 @@ set listchars=tab:▸\ ,eol:¬
 "Invisible character colors
 highlight NonText guifg=#295C69
 highlight SpecialKey guifg=#295C69
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "Dispatch rspec {spec}"
