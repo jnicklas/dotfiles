@@ -23,8 +23,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'majutsushi/tagbar'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'kien/ctrlp.vim'
 
 call plug#end()
 
@@ -114,9 +113,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " convenient shortcut to save file
 nnoremap <C-s> :w<CR>
-
-" open fuzzy find
-nnoremap <C-p> :FZF<CR>
 
 " allow switching away from buffers that have changes
 set nohidden
