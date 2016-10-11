@@ -27,6 +27,10 @@ Plug 'wellle/targets.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'slim-template/vim-slim'
 Plug 'thoughtbot/vim-rspec'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'slashmili/alchemist.vim' " elixir stuff
 
 call plug#end()
 
@@ -148,3 +152,10 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "Dispatch rspec {spec}"
+
+" enable powerline fonts for airline
+let g:airline_powerline_fonts = 1
+set laststatus=2
+
+" reduce update time (default is 4s)
+set updatetime=250
