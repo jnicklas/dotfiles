@@ -31,6 +31,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'slashmili/alchemist.vim' " elixir stuff
+Plug 'nikvdp/ejs-syntax'
 
 call plug#end()
 
