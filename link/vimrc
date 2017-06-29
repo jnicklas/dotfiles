@@ -45,11 +45,11 @@ set autoindent
 set expandtab
 set tags=tags
 
+" Theme settings
 syntax enable
-set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
-
-set guifont=Monaco:h14
+set background=dark
 
 " Explicitly set 256 color support
 set t_Co=256
@@ -57,9 +57,8 @@ set t_Co=256
 " Enable filetype-specific indenting and plugins
 filetype plugin indent on
 
-" Syntax Highlighting on
+" Disble vi compatibility
 set nocompatible
-syntax on
 
 " Disable bell.
 set vb t_vb=
@@ -121,11 +120,6 @@ nnoremap <C-s> :w<CR>
 
 " allow switching away from buffers that have changes
 set hidden
-
-syntax enable
-let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
 
 " use the silver searcher for faster and better Ack searches
 let g:ackprg = 'ag --nogroup --nocolor --column'
