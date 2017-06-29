@@ -107,6 +107,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <C-q> <C-w>q
 
 " highlight search results
 set hlsearch
@@ -147,3 +148,37 @@ set laststatus=2
 
 " reduce update time (default is 4s)
 set updatetime=250
+
+if has("nvim")
+  " terminal mappings
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+  tnoremap <C-q> <C-\><C-N><C-w>q
+
+  " enter insert mode when entering terminal
+  autocmd BufWinEnter,WinEnter term://* startinsert
+
+  " Opens up a new buffer, either vertical or horizontal. Count can be used to
+  " specify the number of visible columns or rows.
+  fun! s:openBuffer(count, vertical)
+    let cmd = a:vertical ? 'vnew' : 'new'
+    let cmd = a:count ? a:count . cmd : cmd
+    exe cmd
+  endf
+
+  " Opens a new terminal buffer, but instead of doing so using 'enew' (same
+  " window), it uses :vnew and :new instead. Usually, I want to open a new
+  " terminal and not replace my current buffer.
+  fun! s:openTerm(args, count, vertical)
+    call s:openBuffer(a:count, a:vertical)
+    exe 'terminal' a:args
+    exe 'startinsert'
+  endf
+
+  command! -count -nargs=* Sterm call s:openTerm(<q-args>, <count>, 0)
+  command! -count -nargs=* Vterm call s:openTerm(<q-args>, <count>, 1)
+endif
+
