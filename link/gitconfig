@@ -30,7 +30,10 @@
 [user]
 	name = Jonas Nicklas
 	email = jonas.nicklas@gmail.com
+	signingkey = F855F80C01A2F737D5A9286D2201B254DFB0C36B
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true
