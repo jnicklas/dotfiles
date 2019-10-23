@@ -78,3 +78,4 @@ export DISABLE_AUTO_TITLE=true
 export DEFAULT_USER=$USER
 export DISABLE_SPRING=true
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
