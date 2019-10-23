@@ -76,3 +76,5 @@ export PATH=$PATH:$CARGO_INSTALL_ROOT/bin
 export DISABLE_AUTO_TITLE=true
 
 export DEFAULT_USER=$USER
+export DISABLE_SPRING=true
+
