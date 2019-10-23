@@ -9,11 +9,13 @@ Plug 'tpope/vim-abolish' " case conversions (and abbreviations)
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-vinegar' " file navigation
+Plug 'tpope/vim-eunuch' " UNIX shell command shortcuts
 Plug 'kchmck/vim-coffee-script'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rizzatti/dash.vim'
 Plug 'tpope/vim-commentary'
@@ -32,6 +34,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'slashmili/alchemist.vim' " elixir stuff
 Plug 'nikvdp/ejs-syntax'
+Plug 'jakwings/vim-pony'
+Plug 'joukevandermaas/vim-ember-hbs'
 
 call plug#end()
 
@@ -44,6 +48,9 @@ set shiftwidth=2
 set autoindent
 set expandtab
 set tags=tags
+set colorcolumn=120
+
+set previewheight=50
 
 " Theme settings
 syntax enable
@@ -62,6 +69,10 @@ set nocompatible
 
 " Disable bell.
 set vb t_vb=
+
+" Paste from last intentionally yanked register
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
 
 " resize current buffer in the given direction
 nnoremap <D-right> :vertical resize +5<cr>
@@ -89,12 +100,16 @@ nnoremap Y y$
 " don't wrap lines that are too long
 set nowrap
 
+" remove trailing white space on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" set up file types for some extensions
 autocmd BufRead *.json :set ft=javascript
 autocmd BufRead *.es6 :set ft=javascript
 autocmd BufRead *.jbuilder :set ft=ruby
 autocmd BufRead *.serenade :set ft=slim
 
+" python should use 4 spaces instead of 2
 autocmd BufRead,BufNewFile *.py set shiftwidth=4
 autocmd BufRead,BufNewFile *.py set tabstop=4
 
@@ -109,9 +124,15 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-q> <C-w>q
 
+" close preview window more easily
+nnoremap <C-c> <C-w>z
+
 " highlight search results
 set hlsearch
 set incsearch
+
+" open git status
+nnoremap gs :Gstatus<CR>
 
 " clear highlighted matches with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -122,18 +143,15 @@ nnoremap <C-s> :w<CR>
 " allow switching away from buffers that have changes
 set hidden
 
-" use the silver searcher for faster and better Ack searches
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " move in quickfix list, useful with Ack.vim
-nnoremap gcn :cn<CR>
-nnoremap gcp :cp<CR>
+nnoremap <C-S-n> :cprevious<CR>
+nnoremap <C-n> :cnext<CR>
 
 " Disable Ex mode. Fuck off.
 nnoremap Q <nop>
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+set listchars=nbsp:¬,tab:▸\ ,eol:¬
 
 " Enable list mode, show hidden characters
 set list
@@ -149,6 +167,20 @@ set laststatus=2
 " reduce update time (default is 4s)
 set updatetime=250
 
+" rspec bindings
+let g:rspec_command = "Dispatch bin/rspec {spec}"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+" map :W to save file and also create directory it is in
+function! WriteCreatingDirs()
+    execute ':silent !mkdir -p %:h'
+    write
+endfunction
+command! W call WriteCreatingDirs()
+
 if has("nvim")
   " terminal mappings
   tnoremap <Esc> <C-\><C-n>
@@ -157,6 +189,10 @@ if has("nvim")
   tnoremap <C-k> <C-\><C-N><C-w>k
   tnoremap <C-l> <C-\><C-N><C-w>l
   tnoremap <C-q> <C-\><C-N><C-w>q
+
+  " show substitution live preview
+  set inccommand=nosplit
+
 
   " enter insert mode when entering terminal
   autocmd BufWinEnter,WinEnter term://* startinsert
