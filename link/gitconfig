@@ -20,7 +20,7 @@
 [rebase]
 	autosquash = true
 [push]
-	default = upstream
+	default = current
 [branch]
 	autosetuprebase = always
 [pull]
