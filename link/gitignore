@@ -3,4 +3,6 @@
 *.swo
 .svn
 .idea
+.vscode
+.sass-cache
 *~
