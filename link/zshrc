@@ -64,6 +64,7 @@ export EDITOR='vim'
 
 alias gs="git status"
 alias gp="git push"
+alias gpf="git push --force-with-lease"
 alias gl="git pull"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
