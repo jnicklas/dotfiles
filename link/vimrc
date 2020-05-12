@@ -36,6 +36,9 @@ Plug 'slashmili/alchemist.vim' " elixir stuff
 Plug 'nikvdp/ejs-syntax'
 Plug 'jakwings/vim-pony'
 Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'leafgarland/typescript-vim'
+Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -57,6 +60,8 @@ syntax enable
 let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
+
+highlight! link SignColumn LineNr
 
 " Explicitly set 256 color support
 set t_Co=256
@@ -180,6 +185,17 @@ function! WriteCreatingDirs()
     write
 endfunction
 command! W call WriteCreatingDirs()
+
+" ALE mappings
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+nmap <silent> <C-i> <Plug>(ale_detail)
+command! D ALEGoToDefinition
+command! DS ALEGoToDefinitionInSplit
+command! DV ALEGoToDefinitionInVSplit
+command! DT ALEGoToDefinitionInTab
+
+" enable deoplete
+let g:deoplete#enable_at_startup = 1
 
 if has("nvim")
   " terminal mappings
