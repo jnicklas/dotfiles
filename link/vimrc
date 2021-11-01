@@ -113,6 +113,7 @@ autocmd BufRead *.json :set ft=javascript
 autocmd BufRead *.es6 :set ft=javascript
 autocmd BufRead *.jbuilder :set ft=ruby
 autocmd BufRead *.serenade :set ft=slim
+autocmd BufRead *.tsx :set ft=typescript
 
 " python should use 4 spaces instead of 2
 autocmd BufRead,BufNewFile *.py set shiftwidth=4
