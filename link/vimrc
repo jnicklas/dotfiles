@@ -138,7 +138,7 @@ set hlsearch
 set incsearch
 
 " open git status
-nnoremap gs :Gstatus<CR>
+nnoremap gs :Git<CR>
 
 " clear highlighted matches with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
